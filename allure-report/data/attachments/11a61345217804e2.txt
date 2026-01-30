@@ -1,0 +1,1 @@
+JWT Bearer Authentication section not found - may be hidden or differently structured
