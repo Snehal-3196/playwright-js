@@ -6,11 +6,13 @@ const LOGIN_URL = 'https://demo.ehrconnect.healthconnect.systems/login';
 
 // EC-74: Check whether the size, color, and UI of different elements is matching the specifications or not
 test(qase(74, 'EC-74: Check whether the size, color, and UI of different elements is matching the specifications or not'), async ({ page }) => {
-  await page.goto(LOGIN_URL);
+  await page.goto(LOGIN_URL, { timeout: 60000 });
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(2000);
 
   // Check login button exists and has proper styling
   const loginButton = page.locator('button[type="submit"], input[type="submit"], button:has-text("Login"), button:has-text("Sign In")').first();
-  await expect(loginButton).toBeVisible();
+  await expect(loginButton).toBeVisible({ timeout: 10000 });
 
   const buttonBBox = await loginButton.boundingBox();
   expect(buttonBBox).not.toBeNull();

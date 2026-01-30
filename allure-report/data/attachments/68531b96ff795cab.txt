@@ -1,1 +1,0 @@
-EMBED badge is displayed for OAuth Configuration
